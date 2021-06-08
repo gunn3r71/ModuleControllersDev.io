@@ -25,9 +25,7 @@ namespace App.Controllers
         [Route("inicio/{id:int?}")]
         public IActionResult Index()
         {
-            var filme = new Movie { Title = "", ReleasedAt = DateTime.Now, Gender = "", Rate = 10000, Description = "", Price = 10000000.00M};
-
-            return RedirectToAction("Privacy",filme);
+            return View();
         }
 
         [Route("termo")]
