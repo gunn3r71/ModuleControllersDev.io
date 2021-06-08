@@ -25,17 +25,23 @@ namespace App.Controllers
         [Route("inicio/{id:int?}")]
         public IActionResult Index()
         {
-            return View();
+            var filme = new Movie { Title = "", ReleasedAt = DateTime.Now, Gender = "", Rate = 10000, Description = "", Price = 10000000.00M};
+
+            return RedirectToAction("Privacy",filme);
         }
 
         [Route("termo")]
-        public IActionResult Privacy()
+        public IActionResult Privacy(Movie movie)
         {
-            //return Json(new { Name = "Lucas", Status = true});
-            var fileBytes = System.IO.File.ReadAllBytes(@"C:/db_app/Cliente_db.csv");
-            var name = "text.csv";
-
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
+            if (ModelState.IsValid)
+            {
+                Console.WriteLine("AOPA");
+            }
+            foreach (var value in ModelState.Values.SelectMany(e => e.Errors))
+            {
+                Console.WriteLine(value.ErrorMessage);
+            }
+            return View();
         }
 
         [Route("error")]

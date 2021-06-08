@@ -16,13 +16,11 @@ namespace App.Models
         [Required(ErrorMessage = "Realese date cannot be null")]
         public DateTime ReleasedAt { get; set; }
         [StringLength(maximumLength:30,MinimumLength = 3, ErrorMessage = "Please, the title must have Maximum Length: 30, Minimum Length: 3")]
-        [RegularExpression(@"^[A-Z]+[a-z-A-Z\u00c0-\u00FF""'\w-*$", ErrorMessage = "Gender in incorrect format")]
         public string Gender { get; set; }
         [Range(minimum:1, maximum: 30000, ErrorMessage = "The value must be between 1 and 30000")]
         [Required(ErrorMessage = "Price cannot be null")]
         public decimal Price { get; set; }
 
-        [RegularExpression(@"^[1-1000]*$",ErrorMessage ="The rate must be a number")]
         [Range(minimum:1, maximum:5, ErrorMessage = "The rate must be between 1 and 5")]
         [Required(ErrorMessage = "Rate cannot be null")]
         public int Rate { get; set; }
